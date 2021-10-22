@@ -445,54 +445,12 @@ open class MMSCameraViewController: UIViewController {
                 self.cameraView.enableSnapButton()
                 return
             }
-
-            // determine the orientation of the device in order to set the orientation correctly in the UIImage.
-            let device = UIDevice.current
-
-            var imageOrientation = UIImage.Orientation.up
-
-            switch device.orientation {
-            case .portrait:
-                imageOrientation = UIImage.Orientation.right
-            case .portraitUpsideDown:
-                imageOrientation = UIImage.Orientation.left
-            case .landscapeLeft:
-                if self.cameraDevice?.position == .back {
-                    imageOrientation = UIImage.Orientation.up
-                } else {
-                    imageOrientation = UIImage.Orientation.downMirrored
-                }
-            case .landscapeRight:
-                if self.cameraDevice?.position == .back {
-                    imageOrientation = UIImage.Orientation.down
-                } else {
-                    imageOrientation = UIImage.Orientation.upMirrored
-                }
-            case .unknown:
-                print("Device orientation has unknown value.")
-            case .faceDown, .faceUp:
-                // if the orientatino is faceup or facedown than use the last orientation for the image.
-                imageOrientation = {
-                    switch self.lastOrientation {
-                    case .landscapeLeft:
-                        return UIImage.Orientation.up
-                    case .landscapeRight:
-                        return UIImage.Orientation.down
-                    case .portrait:
-                        return UIImage.Orientation.right
-                    case .portraitUpsideDown:
-                        return UIImage.Orientation.left
-                    default:
-                        return UIImage.Orientation.right
-                    }
-                } ()
-            }
-
+            
             // convert the captured data into a UIImage
             var cameraImage = UIImage(data: imageData)
 
-            // convert the UIImage into a new UIImage to give it the proper orientation
-            cameraImage = UIImage(cgImage: cameraImage!.cgImage!, scale: 1.0, orientation: imageOrientation)
+            // reorient image if needed
+            cameraImage = UIImage(cgImage: cameraImage!.cgImage!, scale: 1.0, orientation: cameraImage!.imageOrientation)
 
             // Pass the UIImage back on the delegate.
             self.delegate?.cameraDidCaptureStillImage(cameraImage!, camera: self)
