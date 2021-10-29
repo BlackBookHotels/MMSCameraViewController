@@ -483,7 +483,7 @@ open class MMSCameraViewController: UIViewController {
         
         if captureStillImageContext
         {
-            stillImageOutput.removeObserver(self, forKeyPath: "capturingStillImage")
+            //stillImageOutput.removeObserver(self, forKeyPath: "capturingStillImage")
             captureStillImageContext = false
         }
 
