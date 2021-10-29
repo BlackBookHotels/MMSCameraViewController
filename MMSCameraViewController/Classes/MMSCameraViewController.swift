@@ -155,10 +155,9 @@ open class MMSCameraViewController: UIViewController {
             }
         }
 
-        // Set the background colors to black and 50% transparent
-        cameraView.bottomBarView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
-        cameraView.topBarView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
-
+        // Set the background colors to black
+        cameraView.bottomBarView.backgroundColor = UIColor.black
+        cameraView.topBarView.backgroundColor = UIColor.black
     }
 
     /**
