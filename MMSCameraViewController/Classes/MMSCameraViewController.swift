@@ -465,7 +465,11 @@ open class MMSCameraViewController: UIViewController {
         Setup the observers to become notified when the camera is capturing an image, changes to the session, and device orientation
     */
     fileprivate func addObservers() {
+        
+        
         stillImageOutput.addObserver(self, forKeyPath: "capturingStillImage", options: NSKeyValueObservingOptions.new, context: &captureStillImageContext)
+
+        captureStillImageContext = true
 
         addSessionObservers()
 
@@ -476,7 +480,12 @@ open class MMSCameraViewController: UIViewController {
         Removes all the created observers.
     */
     fileprivate func removeObservers() {
-        stillImageOutput.removeObserver(self, forKeyPath: "capturingStillImage")
+        
+        if captureStillImageContext
+        {
+            stillImageOutput.removeObserver(self, forKeyPath: "capturingStillImage")
+            captureStillImageContext = false
+        }
 
         NotificationCenter.default.removeObserver(self)
     }
