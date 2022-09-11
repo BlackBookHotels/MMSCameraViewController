@@ -19,7 +19,6 @@ let package = Package(
             name: "MMSCameraViewController",
             dependencies: [],
             path: "MMSCameraViewController/Classes/",
-            publicHeadersPath: ".",
             linkerSettings: [
                 //Frameworks
             .linkedFramework("AVFoundation"),
