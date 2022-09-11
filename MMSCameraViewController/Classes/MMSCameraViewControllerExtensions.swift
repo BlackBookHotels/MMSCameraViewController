@@ -27,6 +27,7 @@
 // swiftlint:disable line_length
 
 import Foundation
+import UIKit
 
 extension MMSCameraViewController {
 
