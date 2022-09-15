@@ -90,10 +90,10 @@ open class MMSCameraViewController: UIViewController {
 
         if nibBundle == nil {
 
-            nibBundle = Bundle(for: MMSCameraViewController.self)
+            nibBundle = Bundle.module
 
         }
-
+        
         if nibName == nil {
             nibName = "MMSCameraViewController"
         }
