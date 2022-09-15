@@ -27,7 +27,7 @@
 import Foundation
 import UIKit
 
-@objc public protocol MMSCameraViewDelegate: class {
+@objc public protocol MMSCameraViewDelegate: AnyObject {
 
     func cameraDidCaptureStillImage(_ image: UIImage, camera cameraController: MMSCameraViewController)
 
