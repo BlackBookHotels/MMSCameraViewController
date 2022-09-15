@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "MMSCameraViewController",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v9)
     ],
@@ -19,6 +20,9 @@ let package = Package(
             name: "MMSCameraViewController",
             dependencies: [],
             path: "MMSCameraViewController/Classes/",
+            resources: [
+                .process("Assets")
+            ],
             linkerSettings: [
                 //Frameworks
             .linkedFramework("AVFoundation"),
